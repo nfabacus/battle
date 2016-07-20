@@ -3,7 +3,7 @@ RSpec.feature "View Hit Points" do
     visit "/"
     fill_in :Name1, with: 'Albie'
     fill_in :Name2, with: 'Noby'
-    click_button "Submit"
+    click_button "submit"
     expect(page).to have_content("Noby's: 50HP")
   end
 end

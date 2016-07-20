@@ -1,4 +1,11 @@
 require 'sinatra/base'
+require 'player'
+
+# Instead of storing player names as strings
+# in the session, store them as attributes of
+# instances of the Player class in global
+# variables (declared using $)
+
 
 class Battle < Sinatra::Base
 
@@ -8,8 +15,8 @@ class Battle < Sinatra::Base
     erb(:index)
   end
   post '/names' do
-    session["Name1"] = params[:Name1]
-    session["Name2"] = params[:Name2]
+    $Name1 = Player.new(params[:Name1])
+    $Name2 = Player.new(params[:Name2])
     redirect '/play'
   end
 
@@ -22,7 +29,7 @@ class Battle < Sinatra::Base
   get '/attack' do
     @name1 = session["Name1"]
     @name2 = session["Name2"]
-    erb :attack  
+    erb :attack
   end
 
   # start the server if ruby file executed directly

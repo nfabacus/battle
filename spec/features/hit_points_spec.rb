@@ -1,9 +1,6 @@
 RSpec.feature "View Hit Points" do
   scenario "Show Player 2's Hit Points" do
-    visit "/"
-    fill_in :Name1, with: 'Albie'
-    fill_in :Name2, with: 'Noby'
-    click_button "submit"
+    sign_in_and_play
     expect(page).to have_content("Noby's: 50HP")
   end
 end

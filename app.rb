@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require './lib/player'
+require './lib/game'
 
 # Instead of storing player names as strings
 # in the session, store them as attributes of
@@ -15,6 +16,7 @@ class Battle < Sinatra::Base
     erb(:index)
   end
   post '/names' do
+    $game = Game.new
     $player1 = Player.new(params[:Name1])
     $player2 = Player.new(params[:Name2])
     redirect '/play'
@@ -30,7 +32,7 @@ class Battle < Sinatra::Base
   get '/attack' do
     @name1 = $player1.return_name
     @name2 = $player2.return_name
-    $player2.take_damage
+    $game.attack($player2)
     erb :attack
   end
 

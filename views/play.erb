@@ -1,5 +1,5 @@
-Player 1 is <%= @name1 %>. Player 2 is <%= @name2 %>.
-<%= @name2 %>'s: <%= @hp %>HP
+Player 1 is <%= @game.name_of(@game.player1) %>. Player 2 is <%= @game.name_of(@game.player2) %>.
+<%= @game.name_of(@game.player2)  %>'s: <%= @game.player2.hp %>HP
 <form action="/attack">
   <input type="submit" value="attack">
 </form>

@@ -15,9 +15,27 @@ describe Game do
   describe 'attack' do
     it 'damages the other player' do
       expect(player2).to receive(:take_damage)
-      game.attack(player2)
+      game.attack
     end
   end
 
+  describe 'knows the current player' do
+    it 'returns the current player' do
+      expect(game.current_player).to eq player1
+    end
+  end
+
+  describe 'switches players' do
+    it 'switches the current player' do
+      game.switch_turn
+      expect(game.current_player).to eq player2
+    end
+  end
+
+  describe 'knows who the current opponent is' do
+    it 'returns the current opponent' do
+      expect(game.current_opponent).to eq player2
+    end
+  end
 
 end

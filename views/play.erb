@@ -3,9 +3,13 @@
   <%= @game.name_of(@game.player1) %>'s: <%= @game.player1.hp %>HP
   <%= @game.name_of(@game.player2)  %>'s: <%= @game.player2.hp %>HP
 </p>
-<p>
-  <%= @game.name_of(@game.current_player) %>'s turn
-</p>
-<form action="/attack">
-  <input type="submit" value="attack">
-</form>
+<% if @game.gameover %>
+  <%= @game.name_of(@game.current_opponent) %> loses!
+<% else %>
+  <p>
+    <%= @game.name_of(@game.current_player) %>'s turn
+  </p>
+  <form action="/attack">
+    <input type="submit" value="attack">
+  </form>
+<% end %>

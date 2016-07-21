@@ -13,4 +13,8 @@ class Player
     @hp -=10
   end
 
+  def alive?
+    return false if @hp <= 0
+    true
+  end
 end

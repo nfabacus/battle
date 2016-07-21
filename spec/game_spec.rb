@@ -27,6 +27,7 @@ describe Game do
 
   describe 'switches players' do
     it 'switches the current player' do
+      allow(player2).to receive(:alive?).and_return(true)
       game.switch_turn
       expect(game.current_player).to eq player2
     end
@@ -35,6 +36,13 @@ describe Game do
   describe 'knows who the current opponent is' do
     it 'returns the current opponent' do
       expect(game.current_opponent).to eq player2
+    end
+  end
+
+  describe 'knows if it is gameover' do
+    it 'returns true if gameover' do
+      allow(player2).to receive(:alive?).and_return(false)
+      expect(game.gameover).to eq true
     end
   end
 

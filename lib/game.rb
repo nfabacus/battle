@@ -8,6 +8,16 @@ class Game
     @turn = player1
   end
 
+  def self.create(player1, player2)
+    @game = Game.new(player1, player2)
+  end
+
+  def self.get
+    @game
+  end
+
+  @game = Game.get
+
   def name_of(player)
     player.name
   end
